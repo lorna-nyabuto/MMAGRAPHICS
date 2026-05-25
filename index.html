@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar System — Graphics Pipeline</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Solar System Graphics Pipeline</h1>
+  <p class="subtitle">Earth &amp; Mars orbit the Sun · Click an asteroid to launch it</p>
+
+  <div class="canvas-wrap">
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <div id="hit-msg" class="hit-msg"></div>
+  </div>
+
+  <div class="pipeline-panel">
+    <div class="stage" id="s-app">
+      <span class="dot"></span>
+      <div>
+        <strong>① Application Stage</strong>
+        <p id="app-log">Scene initialising…</p>
+      </div>
+    </div>
+    <div class="stage" id="s-geo">
+      <span class="dot"></span>
+      <div>
+        <strong>② Geometry Stage</strong>
+        <p id="geo-log">Awaiting transforms…</p>
+      </div>
+    </div>
+    <div class="stage" id="s-rast">
+      <span class="dot"></span>
+      <div>
+        <strong>③ Rasterization Stage</strong>
+        <p id="rast-log">Awaiting pixels…</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="hint">Click any asteroid in the belt to fire it toward a planet</p>
+
+  <script src="pipeline.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #05050f;
+  color: #d4d0f0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem 2rem;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: #6a6890;
+  margin-bottom: 1.2rem;
+}
+
+/* ── Canvas ── */
+.canvas-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 60px rgba(80,60,200,0.15);
+}
+
+canvas {
+  display: block;
+  cursor: pointer;
+  background: #05050f;
+}
+
+.hit-msg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 20px currentColor;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+.hit-msg.show { opacity: 1; }
+
+/* ── Pipeline panel ── */
+.pipeline-panel {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.stage {
+  flex: 1;
+  background: #0d0d1e;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  transition: border-color 0.3s;
+}
+
+/* Stage accent colors */
+#s-app  { border-left: 3px solid #fc6c8f; }
+#s-geo  { border-left: 3px solid #fca86c; }
+#s-rast { border-left: 3px solid #6cfcca; }
+
+.stage .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+#s-app  .dot { background: #fc6c8f; }
+#s-geo  .dot { background: #fca86c; }
+#s-rast .dot { background: #6cfcca; }
+
+.stage strong {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.stage p {
+  font-size: 0.68rem;
+  color: #6a6890;
+  line-height: 1.5;
+  font-family: 'Courier New', monospace;
+}
+
+/* active pulse */
+.stage.pulse {
+  animation: stagePulse 0.4s ease;
+}
+@keyframes stagePulse {
+  0%   { background: #0d0d1e; }
+  40%  { background: #15152a; }
+  100% { background: #0d0d1e; }
+}
+
+.hint {
+  margin-top: 0.8rem;
+  font-size: 0.72rem;
+  color: #3d3b60;
+}
